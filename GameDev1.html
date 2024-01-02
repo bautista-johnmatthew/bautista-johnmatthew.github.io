@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turn based RPG in Web</title>
+    <link rel="stylesheet" href="GameDev1.css">
+    <script defer src="GameDev1.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="Start_screen" class="scalable_screen main_screen">
+        <h1>A Typical RPG</h1>
+        <p>
+            An average rpg that uses a directional control pad with A and B buttons just like a gameboy game
+        </p>
+        <p class="blink">
+            Press A
+        </p>
+    </div>
+
+    <div id="Game_elements" class="scalable_screen">
+
+        <canvas id="main_character" class="human_character" width="30" height="30">Canvas is unsupported by your browser</canvas>
+        <canvas id="wizard_character" class="human_character" width="30" height="30">Canvas is unsupported by your browser</canvas>
+
+        <div id="Weapon_Selection">
+            <canvas class="Weapon_Select_Object" width="300" height="330" id="WSO_1">Unsupported</canvas>
+            <canvas class="Weapon_Select_Object" width="300" height="330" id="WSO_2">Unsupported</canvas>
+            <canvas class="Weapon_Select_Object" width="300" height="330" id="WSO_3">Unsupported</canvas>
+        </div>
+
+        <canvas id="main_canvas" width="360" height="240">Canvas is unsupported by your browser</canvas>
+
+        <!-- Another div or a layer to seperate objects but still matches the coordinates  -->
+        <canvas id="efx_canvas" width="360" height="240">Canvas is unsupported by your browser</canvas>
+        <div id="Effects_Area">
+            <canvas class="Weapon_Select_Object" width="300" height="330" id="Equipped">Unsupported</canvas>
+        </div>
+
+    </div>
+
+    <div class="disclaimer main_screen">
+        <p> When playing on pc use WASD and KL as A & B<br /> <i> Use H for the tutorial</i> </p>
+    </div>
+
+    <div id="Controls_Section">
+        <button id="Up_Button">UP</button>
+        <button id="Down_Button">Dwn</button>
+        <button id="Left_Button">L</button>
+        <button id="Right_Button">R</button>
+        <button id="A_Button">A</button>
+        <button id="B_Button">B</button>
+        <button id="Tutorial">Tutorial</button>
+    </div>
+
+</body>
+
+
+</html>
