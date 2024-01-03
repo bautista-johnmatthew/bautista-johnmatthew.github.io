@@ -8,17 +8,40 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
             crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="styles.css">
+        <style defer>
+            html {font-size: 16px;}
+            .border-double {border: double 0.5rem #262e76;}
+            .bg-stone {background-color: #336B87;}
+            .bg-mist {background-color: #90AFC5;}
+            .bg-autumn {background-color: #763626;}
+            footer a {
+                color: #ffffff;
+                font-weight: bolder;
+                margin: 0.5rem;
+            }
+            footer ul {list-style: none;}
+            .adapt-text {font-size: 0.75rem;}
+            a {
+                color:#000;
+                text-decoration: none;
+                transition:color 0.2s ease-in;
+            }
+            a:hover {color:#3A5199;}
+            @media screen and (min-width:1080px) {
+                html {
+                    font-size:20px;
+                }
+            }
+        </style>
 
-        <title>My Webpage</title>
+        <title>Homepage</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
 
     <body>
-        <!-- Originally from: https://getbootstrap.com/docs/5.3/components/navbar/#nav-->
-        <nav class="navbar navbar-expand-lg bg-primary">
+        <nav class="navbar navbar-expand-lg bg-stone border-double">
             <div class="container-fluid">
-                <a class="navbar-brand text-white fw-bolder">Homepage</a>
+                <a class="navbar-brand text-white fw-bolder">Home</a>
                 <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -26,10 +49,7 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item active">
-                            <a class="nav-link text-white fw-bolder" aria-current="page" href="#">Home</a>
-                        </li>
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">                    
                         <li class="nav-item dropdown" id="navProject">
                             <a class="nav-link dropdown-toggle text-white fw-bolder" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
@@ -37,43 +57,31 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a class="dropdown-item" href="SimpleRpg/GameDev1.html">Simple
-                                        rpg</a>
+                                    <a class="dropdown-item" href="Projects\SimpleRpg\GameDev1.html">Simple rpg</a>
                                 </li>                                
+                                <li>
+                                    <a class="dropdown-item" href="Projects\90days\90day.html">90 days</a>
+                                </li> 
                             </ul>
                     </ul>
                 </div>
             </div>
         </nav>
+        
+        <div class="container-fluid my-3 text-center bg-stone bg-opacity-50 border-double">
 
-        <!-- Originally from: https://getbootstrap.com/docs/5.3/components/card/#about-->
-        <div class="container-fluid my-3 text-center bg-stone bg-opacity-50 border-autumn">
-
-            <div class="row my-3 bg-mist text-dark border-autumn">
+            <div class="row my-3 bg-mist text-dark border-double"> 
                 <h2 class="display-5 col-md-12">Welcome!</h2>
-                <h3 class="col"> A Personal Website by Matthew Bautista</h3>
+                <h3 class="col-md-12"> By John Matthew Bautista</h3>
             </div>
 
-            <div class="row my-3 gy-3 justify-content-center">
-
-                <div class="col-md-7">
-                    <div class="card mx-auto bg-mist" style="width: 24rem; height: 100%;">
-                        <img src="Resources/GradPic.jpg" class="card-img-top" alt="My grad picture">
-                        <div class="card-body">
-                            <p class="card-text">
-                                I am John Matthew Bautista an aspiring IT student from Taguig City,
-                                Philippines
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-5">
+            <div class="row my-3 gy-3 justify-content-center">        
+                <div class="col-lg-6">
                     <div class="card bg-mist mx-auto" style="width: 20rem; height: 100%;">
                         <img src="#" class="card-img-top" alt="Image from the project">
                         <div class="card-body">
                             <h3 class="card-header bg-autumn bg-opacity-50 text-white">Featured Project</h3>
-                            <h5 class="card-title"><a  href="SimpleRpg\GameDev1.html">Simple rpg</a></h5>
+                            <h5 class="card-title"><a  href="Projects\SimpleRpg\GameDev1.html">Simple rpg</a></h5>
                             <p class="card-text">
                                 A rpg game created on html 5 with a classic gba like controls.
                                 This is a work in progress and written originally by yours truly
@@ -82,50 +90,18 @@
                     </div>
                 </div>
 
-            </div>
-
-            <div class="row">
-                <div class="card mx-auto" style="width: 24rem;">
-                    <div class="card-header bg-mist">
-                        <h5>For inqueries reach out through my social media accounts</h5>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            <p class="card-text"> Gmail: johnmatthewbautista01gmail.com</p>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://github.com/JohnMatthewBautista" class="card-link">Github</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://www.sololearn.com/profile/19569735" class="card-link">SoloLearn</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="https://www.facebook.com/johnmatthew.bautista.98/"
-                                class="card-link">Facebook</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            </div>            
 
         </div>
-
-        <footer class="container-fluid mt-3 py-3 fs-3 bg-stone bg-opacity-75">
-            <ul>
-                <li>
-                    <a href="index.html">Home</a>
-                </li>
-                <li>
-                    <a href="https://github.com/JohnMatthewBautista">
-                        GitHub Account
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.sololearn.com/profile/19569735">
-                        SoloLearn Account
-                    </a>
-                </li>
+    
+        <footer class="container-fluid my-2">            
+            <ul class="list-group list-group-horizontal-lg">
+                <li class="list-group-item"><h5>For inqueries reach out through my social media accounts</h5></li>
+                <a href="https://github.com/JohnMatthewBautista" class="list-group-item flex-fill"> Github Account </a>
+                <a href="https://www.sololearn.com/profile/19569735" class="list-group-item flex-fill"> SoloLearn Account </a>
+                <a href="https://www.facebook.com/johnmatthew.bautista.98/" class="list-group-item flex-fill"> Facebook Account </a>                                    
             </ul>
-        </footer>
+        </footer>    
 
     </body>
 
