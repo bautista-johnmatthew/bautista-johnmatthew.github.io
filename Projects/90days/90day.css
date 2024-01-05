@@ -4,6 +4,18 @@
     border:solid 1px black;
     position:relative;
 }
+#return_home {
+    font-family:"Times New Roman","Serif";
+    font-size: larger;
+    font-weight:bold;
+    text-align:center;
+    border: solid 2px #0ee ;   
+    background-color: #fff;
+    padding: 2px;
+    position:absolute;
+    left: 35px;
+    display:block;
+}
 #info_button {
     width:16px;
     height:16px;

@@ -4,8 +4,20 @@ html {
 body {
     background-color: #009a80;
 }
+#return_home {
+    font-family:"Times New Roman","Serif";
+    font-size: larger;
+    font-weight:bold;
+    text-align:center;
+    border: solid 2px #0ee ;   
+    background-color: #fff;
+    padding: 2px;
+    position:absolute;
+    left: 35px;
+    bottom: 20px;
+    display:block;
+}
 /* General elements */
-/* Change the style of font */
 h1 {
     padding: 1rem;
     font-size: 3rem;
