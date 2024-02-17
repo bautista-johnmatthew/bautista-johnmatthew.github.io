@@ -741,7 +741,7 @@ var Controls = {
 		this.LFT_BTN.on("touchend", () => { Movement.calibrate(); });
 		this.RHT_BTN.on("touchstart", () => { this.go_right(); });
 		this.RHT_BTN.on("touchend", () => { Movement.calibrate(); });
-		this.A_BTN.on("touchstart", () => { this.press_A(); });
+		this.A_BTN.on("touchstart mousedown", () => { this.press_A(); });
 		this.B_BTN.on("touchstart", () => { Movement.calibrate(); });
 		this.B_BTN.on("touchend", () => { this.press_B(); });
 		this.HOW2_BTN.on("touchstart", () => { Events.tutorial();});
@@ -766,6 +766,7 @@ var Events = {
 			draw_functions.main_map_draw();
 			map_states.start_screen = 0;
 			START_SCREEN.remove();
+			$("#msg_area").css("display", "block"); 
 			Controls.controls_active();
 		}
 		// Restart the game
@@ -786,13 +787,35 @@ var Events = {
 		} 
 	},
 
-	// Activates the dialog of the npc and assigns a weapon for the Mc
-	dialog_1: function () {
-		alert("Welcome my grandson, don't be shocked as I have you called you here\n\nI am in need of your strength and skills as a former adventurer");
-		alert("The slimes have appeared in the nearby forest and slowly approaching the town!");
-		alert("Choose one of these weapons laid out on the table and eradicate those beasts!!");
+	msg_area : $("#msg_area").find("p"),
 
-		let weapon_choice = prompt(" - Sword (1)\n - Spear (2)\n - Hammer (3)\nWhich is your choice?", "Input number");
+	// Posts a msg that needs button press to continue
+	msg : function (text, delay = 0) {				
+		return new Promise((resolve) => 
+		{			
+			// Move on if pressed a key
+			Controls.A_BTN.on("touchstart mousedown", () => {				
+				resolve(this.msg_area.text(text))
+			});
+			$(document).on("keypress",(event) => {
+				if (event.key == "k" ) {
+					setTimeout(() => {resolve(this.msg_area.text(text))}, delay);					
+				}
+			})
+		});		
+	},	
+
+	// Activates the dialog of the npc and assigns a weapon for the Mc
+	dialog_1: async function () {
+		Controls.controls_deactivate();
+		Events.event_state.weapon_choosing = 1;
+		this.msg_area.text("Welcome my grandson, don't be shocked as I have you called you here. I am in need of your strength and skills as a former adventurer");
+		await this.msg("The slimes have appeared in the nearby forest and slowly approaching the town!");
+		await this.msg("Choose one of these weapons laid out on the table and eradicate those beasts!!");
+		await this.msg("Go on young one so you'll be able to finish before sundown.\n\nGoodluck and be careful.");
+		let weapon_choice = prompt(" - Sword (1)\n - Spear (2)\n - Hammer (3)\nWhich is your choice?", "Input number");	
+
+		// Selection of weapon and removal
 		if (weapon_choice == 1) {
 			WeaponClass.sword_design(EQ_ELE_C); 
 			Mc.equipped_weapon = new WeaponClass("Sword", 10, 1, 2, Mc.equipped_element);
@@ -805,16 +828,20 @@ var Events = {
 			WeaponClass.hammer_design(EQ_ELE_C); 
 			Mc.equipped_weapon = new WeaponClass("Hammer", 25, 1, 1, Mc.equipped_element);
 		}
-		else { return; } //selection of weapon and removal
-		Events.event_state.weapon_choosing = 1;
+		else { 
+			Events.event_state.weapon_choosing = 0; 
+		} 		
 
 		// Hides the chosen weapon from the table
 		let chosen = $(".Weapon_Select_Object");
 		chosen.eq(weapon_choice - 1).toggle();
 		// Show the equipped weapon on screen
 		Mc.equipped_element.css({ "display": "inline" });
-		Movement.calibrate();
-		alert("Go on young one so you'll be able to finish before sundown.\n\nGoodluck and be careful.");
+		Movement.calibrate();	
+		Controls.controls_active();
+		setTimeout(() => {
+			this.msg_area.text("  ");
+		}, 2000);			
 	},
 
 	// Activates the next 'scene' and removes the irrelevant elements on screen
@@ -833,28 +860,30 @@ var Events = {
 		EnemyClass.spawn(-1, -1);
 	},
 
-	tutorial: function ()
+	tutorial: async function ()
 	{
 		// Use the js to ask yes or no
 		let a = confirm("Do you want to read the tutorial?") ;
 
 		if (a)
 		{
-			alert("The game is designed as a 2.5d environment limited to left and right directions \n" + 
+			this.msg_area.text("The game is designed as a 2.5d environment limited to left and right directions \n" + 
 			"It has a semi turn based movement \n ps. click one at a time");
 
-			alert("Starting the game \n Approach the npc and choose a weapon, then proceed by pressing A at the door to leave the house");
+			await this.msg("Starting the game \n Approach the npc and choose a weapon, then proceed by pressing A at the door to leave the house");
 
-			alert("Weapon Types \n Every 'move' allows the player to attack but the different weapons have some characteristics : \n " + 
+			await this.msg("Weapon Types \n Every 'move' allows the player to attack but the different weapons have some characteristics : \n " + 
 			"Spear - Has a range of 2 with 10 damage. \n Sword - Can swing twice in a turn with 15 damage. \n Hammer - Deals 20 damage");
 
-			alert("Beating the game \n Defeat and clear the slimes completely, but beware the slimes can multiply " + 
+			await this.msg("Beating the game \n Defeat and clear the slimes completely, but beware the slimes can multiply " + 
 			"and their health increases as more of them gets killed. \n The slimes can attack you when you move infornt of them or they approach you.")
 
-			alert("This game is not as optimised but here are some tips: \n" + 
+			await this.msg("This game is not as optimised but here are some tips: \n" + 
 			"- Open the console when using pc with ctrl+shift+c or other methods to see the game's progress. \n" + 
 			"- The Mc changes color as it sustains damage. \n" + 
 			"- Auto attacks happen when you move away from the enemy (up/down) \n Have fun!! (as much fun as this game can be). ");
+
+			await this.msg("  ");
 		} 
 		else 
 		{
