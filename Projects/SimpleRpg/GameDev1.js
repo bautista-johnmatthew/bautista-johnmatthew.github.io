@@ -286,8 +286,8 @@ class EnemyClass {
 	}
 
 	// Plays the animation for the attack of the enemy
-	enemy_attack() {
-		console.log("Mc was hit");
+	async enemy_attack() {
+		await Events.notif("You got hit hp : " + Mc.health);
 
 		function attack_anim (c, x, y, i)
 		{
@@ -310,10 +310,10 @@ class EnemyClass {
 	}
 
 	// Applies damage to the chosen enemy
-	declare_hit ()
+	async declare_hit ()
 	{
 		this.health = this.health - Mc.equipped_weapon.base_dmg;
-		console.log(this.name + " hp: " + this.health)
+		await Events.notif(this.name + " hp: " + this.health)
 		// Animation of getting hit
 		$(this.element).animate({"background-color": "rgb(255,0,0)"}, 300);
 		if (this.health <= 0)
@@ -430,12 +430,12 @@ class WeaponClass {
 	}
 
 	// The basic attack animation of any weapon and applies the attacking functionality
-	basic_attack() 
+	async basic_attack() 
 	{
 		// Checks the maximum usage of a weapon per turn
 		if (WeaponClass.usage >= this.uses)
 		{
-			console.log("Out of Stamina");
+			await Events.notif("Out of Stamina");
 			return true;
 		}
 		else 
@@ -478,7 +478,7 @@ class WeaponClass {
 				WeaponClass.smash_anim(efx_cntxt, (Mc.x * 10) + (plus * anim_d), (Mc.y * 10) + 20, 0);
 				break;
 			default:
-				console.log("Error");
+				await Events.notif("Error");
 		}
 	}
 
@@ -522,6 +522,12 @@ var Movement = {
 		if (obj.x > 0) { obj.l = "1"; } else if (obj.x <= 0) { obj.l = "0"; }
 		if (obj.x < 33) { obj.r = "1"; } else if (obj.x >= 33) { obj.r = "0"; }
 
+		// When the Mc moves again the weapon usage resets
+		if (obj.name == "main_character")
+		{
+			WeaponClass.usage = 0;
+		}
+
 		if (map_states.main_map == 1) {
 			// Restrictions for the table
 			if (obj.x < 15 && obj.x > 3) {
@@ -540,14 +546,7 @@ var Movement = {
 		else if (map_states.adventure_map == 1)
 		{
 			this.check_collision_characters(obj);
-		}
-
-		// When the Mc moves again the weapon usage resets
-		if (obj.name == "main_character")
-		{
-			WeaponClass.usage = 0;
-		}
-
+		}		
 		return;
 	},
 
@@ -566,17 +565,23 @@ var Movement = {
 			if (obj.name == "main_character") { auto_attack = true;}
 			// If the obj is also an enemy check when it hits the Mc
 			else if (obj.name == current.name) { current = Mc;}
-
+			
 			// If the other enemies are beside the current obj
 			if (x + 3 == current.x && y == current.y)
 			{
-				// Auto attacks if the mc is about to face the enemy
-				if (auto_attack && obj.facing == "right") { obj.equipped_weapon.basic_attack();}
+				// Auto attacks if the mc is about to face the enemy	
+				if (auto_attack && obj.facing == "right") {					
+					obj.equipped_weapon.basic_attack();
+					WeaponClass.usage = 0;
+				}
 				obj.r = "0";
 			}
 			if (x - 3 == current.x && y == current.y)
 			{
-				if (auto_attack && obj.facing == "left") { Mc.equipped_weapon.basic_attack();}
+				if (auto_attack && obj.facing == "left") { 					
+					obj.equipped_weapon.basic_attack();
+					WeaponClass.usage = 0;
+				}
 				obj.l = "0";
 			}
 
@@ -789,8 +794,24 @@ var Events = {
 
 	msg_area : $("#msg_area").find("p"),
 
+	notif : function (text) {				
+		return new Promise((resolve) => 
+		{					
+			// Clear msg area if too much
+			if (this.msg_area.contents().length >= 3) {
+				setTimeout(() => {
+					this.msg_area.empty();
+				}, 1000);			
+			}	
+
+			setTimeout(() => {
+				resolve(this.msg_area.append(text + "\n"))
+			}, 1000);								
+		})		
+	},	
+
 	// Posts a msg that needs button press to continue
-	msg : function (text, delay = 0) {				
+	msg : function (text) {				
 		return new Promise((resolve) => 
 		{			
 			// Move on if pressed a key
@@ -799,7 +820,7 @@ var Events = {
 			});
 			$(document).on("keypress",(event) => {
 				if (event.key == "k" ) {
-					setTimeout(() => {resolve(this.msg_area.text(text))}, delay);					
+					resolve(this.msg_area.text(text))
 				}
 			})
 		});		
@@ -840,7 +861,7 @@ var Events = {
 		Movement.calibrate();	
 		Controls.controls_active();
 		setTimeout(() => {
-			this.msg_area.text("  ");
+			this.msg_area.empty();
 		}, 2000);			
 	},
 
@@ -868,7 +889,7 @@ var Events = {
 		if (a)
 		{
 			this.msg_area.text("The game is designed as a 2.5d environment limited to left and right directions \n" + 
-			"It has a semi turn based movement \n ps. click one at a time");
+			"It has a semi turn based movement \n ps. click one at a time \n Press A");
 
 			await this.msg("Starting the game \n Approach the npc and choose a weapon, then proceed by pressing A at the door to leave the house");
 
@@ -876,12 +897,13 @@ var Events = {
 			"Spear - Has a range of 2 with 10 damage. \n Sword - Can swing twice in a turn with 15 damage. \n Hammer - Deals 20 damage");
 
 			await this.msg("Beating the game \n Defeat and clear the slimes completely, but beware the slimes can multiply " + 
-			"and their health increases as more of them gets killed. \n The slimes can attack you when you move infornt of them or they approach you.")
+			"and their health increases as more of them gets killed. \n The slimes can attack you when you move infront of them or they approach you.")
 
-			await this.msg("This game is not as optimised but here are some tips: \n" + 
-			"- Open the console when using pc with ctrl+shift+c or other methods to see the game's progress. \n" + 
-			"- The Mc changes color as it sustains damage. \n" + 
-			"- Auto attacks happen when you move away from the enemy (up/down) \n Have fun!! (as much fun as this game can be). ");
+			await this.msg("This game is not as optimised but here are some tips: \n" + 			 
+			"- The Mc changes color as it sustains damage \n" + 
+			"- Auto attacks happen when you move away from the enemy (up/down) \n" +
+			"- Avoid moving towards the enemy, try side to side \n" +
+			"  Have fun!! (as much fun as this game can be). ");
 
 			await this.msg("  ");
 		} 
