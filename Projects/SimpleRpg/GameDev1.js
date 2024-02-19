@@ -51,7 +51,7 @@ var draw_functions = {
 		}
 		// Adventure_map or area of encounters
 		mcvsC.clearRect(0, 0, 360, 240);
-		mcvsC.beginPath();mcvsC.rect(0, 0, 360, 240);mcvsC.fillStyle = "rgb(0,180,90)";mcvsC.fill();
+		mcvsC.beginPath();mcvsC.rect(0, 0, 360, 240);mcvsC.fillStyle = "rgb(0,240,90)";mcvsC.fill();
 		for (let i = 0; i < 360; i += 30)
 		{
 			tree_tile(mcvsC, i, 0);
@@ -107,6 +107,7 @@ var Mc = {
 			return;
 		}
 		MAIN_MAP.remove();
+		$("#msg_area").remove();
 		// Except for the A button
 		Controls.A_BTN.on("touchstart mousedown", () => { Controls.press_A();})
 		$(document).on("keypress", function (event) 
@@ -123,14 +124,13 @@ var Mc = {
 
 	// Creates the victory screen
 	victory : function ()
-	{
-		Controls.controls_active();
+	{		
 		MAIN_MAP.remove();
 		let victory_screen = "<div class=main_screen> <h1> Victory </h1> <p> You defeated the slimes! </p> <p> You survived upto level "
 + EnemyClass.difficulty + "</p> <p class = blink> Press A to Play Again </p> </div>";
 
 		$("body").prepend(victory_screen)
-		map_states.gameover_screen = 1
+		map_states.gameover_screen = 1		
 	}
 }
 
@@ -241,8 +241,7 @@ class EnemyClass {
 			Movement.check_collision(EnemyClass.enemy_array[i]);
 			EnemyClass.enemy_array[i].check_distance();
 			EnemyClass.enemy_array[i].calibrate_enemy();
-		}
-
+		}		
 	}
 
 	// Decides the enemy action whether to move, spawn, or attack
@@ -298,8 +297,7 @@ class EnemyClass {
 			i += 2.5;
 			let a = setTimeout(attack_anim, 150, c, x, y, i);
 			if (i == 10) {
-				clearTimeout(a);
-				Controls.controls_active();
+				clearTimeout(a);				
 				Mc.equipped_element.css({ "transform": "", "animation": "" });
 				c.clearRect(0, 0, 360, 240);
 			}
@@ -313,13 +311,15 @@ class EnemyClass {
 	async declare_hit ()
 	{
 		this.health = this.health - Mc.equipped_weapon.base_dmg;
-		await Events.notif(this.name + " hp: " + this.health)
-		// Animation of getting hit
-		$(this.element).animate({"background-color": "rgb(255,0,0)"}, 300);
-		if (this.health <= 0)
-		{
+		if (this.health <= 0) {
+			await Events.notif("You have slain " + this.name);
+			Controls.controls_deactivate();
 			this.death();
+		} else {		
+			await Events.notif(this.name + " hp: " + this.health);
 		}
+		// Animation of getting hit
+		//$(this.element).animate({"background-color": "rgb(255,0,0)"}, 300);		
 	}
 
 	// When the enemy's health is depleted
@@ -331,9 +331,8 @@ class EnemyClass {
 		EnemyClass.difficulty += 1
 
 		// If all the enemies are cleared declare victory
-		if (EnemyClass.enemy_array.length <= 0) { Mc.victory();}
+		if (EnemyClass.enemy_array.length <= 0) { Mc.victory();}		
 	}
-
 }
 
 
@@ -393,8 +392,7 @@ class WeaponClass {
 		// This is the end conditon of the animations
 		if (i > .45) {
 			// These lines reset the animation and controls
-			clearTimeout(a);
-			Controls.controls_active();
+			clearTimeout(a);			
 			Mc.equipped_element.css({ "transform": "", "animation": "" });
 			c.clearRect(0, 0, 360, 240);
 		}
@@ -407,8 +405,7 @@ class WeaponClass {
 		i += 5 * d;
 		let a = setTimeout(WeaponClass.strike_anim, 100, c, x, y, i, d);
 		if (i == 25 * d) {
-			clearTimeout(a);
-			Controls.controls_active();
+			clearTimeout(a);			
 			Mc.equipped_element.css({ "transform": "", "animation": "" });
 			c.clearRect(0, 0, 360, 300);
 		}
@@ -422,21 +419,31 @@ class WeaponClass {
 		i += 2.5;
 		let a = setTimeout(WeaponClass.smash_anim, 150, c, x, y, i);
 		if (i == 10) {
-			clearTimeout(a);
-			Controls.controls_active();
+			clearTimeout(a);			
 			Mc.equipped_element.css({ "transform": "", "animation": "" });
 			c.clearRect(0, 0, 360, 300);
 		}
+	}	
+
+	// Local function to delat the reactivation of controls
+	reactivate ()
+	{
+		return new Promise((resolve) => {
+			setTimeout(() => {
+				resolve(Controls.controls_active())
+			}, 500);
+		})
 	}
 
 	// The basic attack animation of any weapon and applies the attacking functionality
 	async basic_attack() 
 	{
+		Controls.controls_deactivate();
 		// Checks the maximum usage of a weapon per turn
 		if (WeaponClass.usage >= this.uses)
 		{
-			await Events.notif("Out of Stamina");
-			return true;
+			await Events.notif("Out of Stamina");			
+			this.reactivate();
 		}
 		else 
 		{
@@ -479,7 +486,7 @@ class WeaponClass {
 				break;
 			default:
 				await Events.notif("Error");
-		}
+		}				
 	}
 
 	// Checks if the enemies are in the range of the attack
@@ -489,7 +496,7 @@ class WeaponClass {
 		let d;
 		if (Mc.facing == "right"){d = 1;}
 		else if (Mc.facing == "left"){d = -1;}
-
+		
 		for (let i = 0; i < EnemyClass.enemy_array.length; i++)
 		{
 			let current = EnemyClass.enemy_array[i];
@@ -502,8 +509,8 @@ class WeaponClass {
 				}
 			}
 		}
-		return;
-	}
+		this.reactivate();
+	}	
 
 }
 
@@ -603,8 +610,7 @@ var Movement = {
 		}
 		// If a battle is happening activate movement of the enemies
 		// Simulates a 'turn'
-		if (Events.event_state.exit_house == 1) 
-		{
+		if (Events.event_state.exit_house == 1) {			
 			EnemyClass.enemy_move();
 		}
 	}
@@ -632,7 +638,7 @@ var Controls = {
 	go_down: function () 
 	{
 		Movement.check_collision(Mc);
-		if (Mc.d == "1") { Mc.y += 3; }//I removed calibrate here
+		if (Mc.d == "1") { Mc.y += 3; }
 	},
 
 	go_left: function () 
@@ -651,10 +657,14 @@ var Controls = {
 		if (Mc.r == "1") { Mc.x += 3; }
 	},
 
-	// Basic interaction that calls check_event
-	// Allows further modification for A button
+	// Basic interaction that calls check_event	
 	press_A: function () 
 	{
+		// Skip to next turn
+		if (Events.event_state.exit_house == 1) {
+			Movement.calibrate();
+			Movement.check_collision_characters(Mc);			
+		}
 		Events.check_event();
 	},
 
@@ -662,12 +672,8 @@ var Controls = {
 	press_B: function () 
 	{
 		// Prevent activation without a weapon equipped
-		if (Events.event_state.weapon_choosing == 0){ return;}
-		Controls.controls_deactivate();
-		if (Mc.equipped_weapon.basic_attack())
-		{
-			Controls.controls_active();
-		}
+		if (Events.event_state.weapon_choosing == 0){ return;}		
+		Mc.equipped_weapon.basic_attack();		
 	},
 
 	// Attaches the function to the chosen keyboard keys
@@ -678,7 +684,7 @@ var Controls = {
 		$(document).on("keypress", function (event) {	
 			// This part is to prevent holding down a key
 			clicks += 1;
-			if (clicks > 3){ return;}
+			if (clicks >= 3) { return;}
 
 			switch (event.key) 
 			{
@@ -889,9 +895,11 @@ var Events = {
 		if (a)
 		{
 			this.msg_area.text("The game is designed as a 2.5d environment limited to left and right directions \n" + 
-			"It has a semi turn based movement \n ps. click one at a time \n Press A");
+			"It has a semi turn based movement \n ps. click one at a time \n Press A/K to continue");
 
 			await this.msg("Starting the game \n Approach the npc and choose a weapon, then proceed by pressing A at the door to leave the house");
+
+			await this.msg("Press A/K to continue dialogue or skip a turn \nPress B/L to attack");
 
 			await this.msg("Weapon Types \n Every 'move' allows the player to attack but the different weapons have some characteristics : \n " + 
 			"Spear - Has a range of 2 with 10 damage. \n Sword - Can swing twice in a turn with 15 damage. \n Hammer - Deals 20 damage");

@@ -8,7 +8,7 @@ The game is designed as a 2.5d environment limited to left and right directions.
 __ps. click one at a time__
 
 + Starting the game
- Approach the npc and choose a weapon, then proceed by pressing A at the door to leave the house. Use A (K in keyboard) to interact and B (or L) to activate attacks
+ Approach the npc and choose a weapon, then proceed by pressing A at the door to leave the house. Use A (K in keyboard) to interact and skip a turn. Use B (or L) to activate attacks
 
 + Weapon Types 
 Every 'move' or click allows the player to attack but the different weapons have some characteristics :
@@ -20,9 +20,9 @@ Every 'move' or click allows the player to attack but the different weapons have
 Defeat and clear the slimes completely, but beware the slimes can multiply and their health increases as more of them gets killed. The slimes can attack you when you move infornt of them or they approach you. The winning condition is clearing all the slimes before more of them spawn.
 
 + This game is not very intuitive but ere are some tips:
-	- Open the console when using pc with ctrl+shift+c or other methods to see the game's progress. 
+	- Avoid moving towards the enemy and bait them.
 	- The Mc changes color as it sustains damage.
-	- Auto attacks happen when you move away from the enemy (up/down)
+	- Auto attacks happen when you move away from the enemy (up/down).
 
  **Have fun!! (as much fun as this game can be)**
 		
