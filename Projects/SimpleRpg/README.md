@@ -17,9 +17,9 @@ Every 'move' or click allows the player to attack but the different weapons have
 	- Hammer = Deals 20 damage
 
 + Beating the game 
-Defeat and clear the slimes completely, but beware the slimes can multiply and their health increases as more of them gets killed. The slimes can attack you when you move infornt of them or they approach you. The winning condition is clearing all the slimes before more of them spawn.
+Defeat and clear the slimes completely, but beware the slimes can multiply and their health increases as more of them gets killed. The slimes can attack you when you move infornt of them or they approach you. The winning condition is clearing all the slimes before more of them spawn. Or trying to survive the longest possible.
 
-+ This game is not very intuitive but ere are some tips:
++ This game is not very intuitive but here are some tips:
 	- Avoid moving towards the enemy and bait them.
 	- The Mc changes color as it sustains damage.
 	- Auto attacks happen when you move away from the enemy (up/down).
