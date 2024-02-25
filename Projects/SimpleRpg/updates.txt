@@ -1,0 +1,35 @@
++ Future Plans
+- Fix the attack anim on left side (still looks ugly)
+- allow facing left and right (optional)
+    = allow left and right, to face direction before moving
+
+
+Feb 16 - 19, 2024 (Updates)
++ Error
+- bug when killing one enemy in auto_attack, leads to instant win 
+    = The delay on attacks? (fixed, but the attack now waits for the msg to load)
+- bug when an opponent remains on screen (fixed)
+
++ Plans
+- message system
+    = npc (done)
+    = tutorial (done)
+    = game message (done)
+- fix auto attack (done)
+- allow remaining in same position (done)
+    = pressing "a" allows remaining
+
+
++ DONE
+- message area (html)
+- basic message placing (and white space)
+- Msg of npc complete
+    - with button presses to continue (pc and mobile)
+- tutorial (done)
+    = start with alert 1st
+- game message (done)
+- fix auto attack 
+    how:
+    - reset first after move
+    - reset usage after an auto attack
+
