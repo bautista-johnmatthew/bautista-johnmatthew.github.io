@@ -1,0 +1,176 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://data/fonts/FFFFORWA.tres" type="DynamicFont" id=1]
+[ext_resource path="res://data/sprites/platform4.png" type="Texture" id=2]
+[ext_resource path="res://data/sprites/platform3.png" type="Texture" id=3]
+[ext_resource path="res://data/sprites/mc_sprites.tres" type="SpriteFrames" id=4]
+[ext_resource path="res://data/sprites/platform2.png" type="Texture" id=5]
+[ext_resource path="res://data/sprites/platform1.png" type="Texture" id=6]
+[ext_resource path="res://data/scripts/Victory.gd" type="Script" id=8]
+[ext_resource path="res://data/sprites/snowflake.png" type="Texture" id=9]
+
+[sub_resource type="DynamicFontData" id=1]
+antialiased = false
+font_path = "res://data/fonts/FFFFORWA.TTF"
+
+[sub_resource type="DynamicFont" id=2]
+size = 8
+outline_color = Color( 0.262745, 0.321569, 0.239216, 1 )
+extra_spacing_top = 2
+extra_spacing_char = 1
+font_data = SubResource( 1 )
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:bbcode_text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ "[center]Victory" ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "change"
+length = 6.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:bbcode_text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2, 3, 4, 5, 6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ "[center]Victory", "[center]Victory", "[center]Restart", "[center] Press", "[center][space]", "[center][space]" ]
+}
+
+[node name="Victory" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -756.0
+margin_bottom = -432.0
+script = ExtResource( 8 )
+
+[node name="Background" type="ColorRect" parent="."]
+margin_right = 84.0
+margin_bottom = 48.0
+color = Color( 0.262745, 0.321569, 0.239216, 1 )
+
+[node name="Icons" type="Node2D" parent="."]
+position = Vector2( 14, 11 )
+
+[node name="Scoreboard" type="RichTextLabel" parent="Icons"]
+margin_left = 11.0
+margin_top = -8.0
+margin_right = 84.0
+margin_bottom = 77.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_colors/default_color = Color( 1, 1, 1, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "0 x 10
+0 x 10
+0 x 10
+0 x 10
+0 x 30
+Total : "
+text = "0 x 10
+0 x 10
+0 x 10
+0 x 10
+0 x 30
+Total : "
+fit_content_height = true
+
+[node name="pt4" type="ColorRect" parent="Icons"]
+margin_left = -10.0
+margin_top = -8.0
+margin_right = 10.0
+margin_bottom = -2.0
+color = Color( 0.780392, 0.941176, 0.847059, 1 )
+
+[node name="Sprite4" type="Sprite" parent="Icons/pt4"]
+position = Vector2( 10, -3 )
+texture = ExtResource( 2 )
+
+[node name="pt3" type="ColorRect" parent="Icons"]
+margin_left = -10.0
+margin_top = -1.0
+margin_right = 10.0
+margin_bottom = 5.0
+color = Color( 0.780392, 0.941176, 0.847059, 1 )
+
+[node name="Sprite3" type="Sprite" parent="Icons/pt3"]
+position = Vector2( 10, -3 )
+texture = ExtResource( 3 )
+
+[node name="pt2" type="ColorRect" parent="Icons"]
+margin_left = -10.0
+margin_top = 6.0
+margin_right = 10.0
+margin_bottom = 12.0
+color = Color( 0.780392, 0.941176, 0.847059, 1 )
+
+[node name="Sprite2" type="Sprite" parent="Icons/pt2"]
+position = Vector2( 10, -3 )
+texture = ExtResource( 5 )
+
+[node name="pt1" type="ColorRect" parent="Icons"]
+margin_left = -10.0
+margin_top = 13.0
+margin_right = 10.0
+margin_bottom = 19.0
+color = Color( 0.780392, 0.941176, 0.847059, 1 )
+
+[node name="Sprite" type="Sprite" parent="Icons/pt1"]
+position = Vector2( 10, -3 )
+texture = ExtResource( 6 )
+
+[node name="pt5" type="ColorRect" parent="Icons"]
+margin_left = -10.0
+margin_top = 20.0
+margin_right = 10.0
+margin_bottom = 34.0
+color = Color( 0.780392, 0.941176, 0.847059, 1 )
+
+[node name="Sprite" type="Sprite" parent="Icons/pt5"]
+position = Vector2( 10, 7 )
+texture = ExtResource( 9 )
+
+[node name="Title" type="RichTextLabel" parent="."]
+margin_left = 31.0
+margin_top = 3.0
+margin_right = 97.0
+margin_bottom = 15.0
+custom_colors/default_color = Color( 1, 1, 1, 1 )
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[center]Victory"
+text = "[center]Victory"
+fit_content_height = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Title"]
+autoplay = "change"
+anims/RESET = SubResource( 3 )
+anims/change = SubResource( 4 )
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+position = Vector2( 61, 28 )
+frames = ExtResource( 4 )
+animation = "dance"
+frame = 5
+playing = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 42, 24 )
+current = true
+zoom = Vector2( 0.1, 0.1 )
+editor_draw_limits = true
