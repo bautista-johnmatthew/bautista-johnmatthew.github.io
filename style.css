@@ -1,0 +1,39 @@
+html {
+    font-size: 16px;
+}
+.border-double {
+    border: double 0.5rem #262e76;
+}
+.bg-stone {
+    background-color: #336B87;
+}
+.bg-mist {
+    background-color: #90AFC5;
+}
+.bg-autumn {
+    background-color: #763626;
+}
+footer a {
+    color: #ffffff;
+    font-weight: bolder;
+    margin: 0.5rem;
+}
+footer ul {
+    list-style: none;
+}
+.adapt-text {
+    font-size: 0.75rem;
+}
+a {
+    color:#000;
+    text-decoration: none;
+    transition:color 0.2s ease-in;
+}
+a:hover {
+    color:#3A5199;
+}
+@media screen and (min-width:1080px) {
+    html {
+        font-size:20px;
+    }
+}
