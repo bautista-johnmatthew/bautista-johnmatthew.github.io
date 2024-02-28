@@ -24,6 +24,13 @@ footer ul {
 .adapt-text {
     font-size: 0.75rem;
 }
+p {
+    white-space: normal;
+    text-align: justify;
+}
+small {
+    color: #262e76 ;
+}
 a {
     color:#000;
     text-decoration: none;

@@ -444,6 +444,7 @@ class WeaponClass {
 		{
 			await Events.notif("Out of Stamina");			
 			this.reactivate();
+			return
 		}
 		else 
 		{

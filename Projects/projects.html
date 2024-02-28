@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
+        </script>
+    <link rel="stylesheet" href="../style.css">
+
+    <title>Homepage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-stone border-double">
+        <div class="container-fluid">
+            <a class="navbar-brand text-white fw-bolder" href="../index.html">Home</a>
+            <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown" id="navProject">
+                        <a class="nav-link dropdown-toggle text-white fw-bolder" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Projects
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item active fw-bold" href="Projects/projects.html"> View All </a>
+                            </li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <a class="dropdown-item" href="SimpleRpg\GameDev1.html">Simple rpg</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="90days\90day.html">90 days</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="IceBreaker\index.html">Ice Breaker</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid text-center bg-stone bg-opacity-50 border-double">
+        <div class="row m-3 p-2 bg-mist border-double">
+            <h2> Projects </h2>
+            <p> The following projects can be accesed on this site: </p>
+        </div>
+        <div class="row m-3">
+            <div class="list-group flex gap-3">
+                <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1"> 90 days </h5>
+                        <small> JavaScript </small>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="90days.png" class="img-thumbnail" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <p class="mb-1">A 90 day counter widget using javascript, more specifically it is
+                                a simple animation player used to count 90 days.
+                                The input is only temporary stored in the script. 
+                                And this is one my oldest practice projects </p>
+                            <p class="text-center"> Finished </p>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1"> SimpleRpg </h5>
+                        <small> JavaScript </small>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="SimpleRpg.png" class="img-thumbnail" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <p class="mb-1"> 
+                                A html5 game written purely using javascript that features turn based movement on a 2.5d environment.
+                                The goal of the game is to eliminate enemy slimes that follow the main character's movements.
+                                This is relatively one of my projects that required writing a lot or original mechanics.
+                                It is regularly updated for other features
+                            </p>
+                            <p class="text-center"> Updating </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <h4> Future Updates </h4>
+                        <ol class="list-group list-group-numbered">
+                            <li class="list-group-item">Fix animations playing on left side</li>
+                            <li class="list-group-item">More enemy types</li>
+                        </ol>
+                    </div>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1"> IceBreaker </h5>
+                        <small> GDscript / HTML5 </small>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="IceBreaker.png" class="img-thumbnail" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <p class="mb-1"> 
+                                A game imported to HTML 5 as a submission to the Nokia 3310 Jam 6. 
+                                It is styled according to the colors of a nokia 3310 phone, including its limitations in playing music.
+                                It is a platformer game that is inspired from "Ice Climbers", however it lacks multiple levels and is more simplified.
+                                Due to the nature of limited time in development it requires updates for optimization.
+                            </p>
+                            <p class="text-center"> Updating </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="container-fluid my-2">
+        <ul class="list-group list-group-horizontal-lg">
+            <li class="list-group-item">
+                <h5>For inqueries reach out through my social media accounts</h5>
+            </li>
+            <a href="https://github.com/JohnMatthewBautista" class="list-group-item flex-fill"> Github Account </a>
+            <a href="https://www.sololearn.com/profile/19569735" class="list-group-item flex-fill"> SoloLearn Account
+            </a>
+        </ul>
+    </footer>
+
+</body>
+
+</html>
