@@ -1,11 +1,15 @@
 html {
     font-size: 16px;
 }
+body {
+    background-color: #90AFC5;
+    color:#000;
+}
 .border-double {
     border: double 0.5rem #262e76;
 }
 .bg-stone {
-    background-color: #336B87;
+    background-color: #326a85cc;
 }
 .bg-mist {
     background-color: #90AFC5;
@@ -16,7 +20,6 @@ html {
 footer a {
     color: #ffffff;
     font-weight: bolder;
-    margin: 0.5rem;
 }
 footer ul {
     list-style: none;
@@ -31,6 +34,14 @@ p {
 small {
     color: #262e76 ;
 }
+.list-group-item {
+    background-color: #90AFC5;
+}
+.list-group-item-action:hover {
+    background-color: #326a85cc;
+    color: #fff;
+}
+
 a {
     color:#000;
     text-decoration: none;
