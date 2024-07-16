@@ -79,12 +79,10 @@ var Mc = {
 	// This function applies damage to the Mc
 	hit: function (enemy) 
 	{
+        // Check remaining health
 		this.health = this.health - enemy.dmg;
 		let health = this.health;
-		console.log(health);
-		if (health <= 0) {
-			this.gameover();
-		}
+		if (health <= 0) { this.gameover();}
 	
 		// Change mc color based on remaining health
 		this.cntxt.clearRect(0, 0, 30, 30);
@@ -92,29 +90,22 @@ var Mc = {
 		else if (health < 70 && health >= 50) { human_charac(this.cntxt, 250 - 50);}
 		else if (health < 50 && health >= 30) { human_charac(this.cntxt, 250 - 20);}
 		else if (health < 30 && health >= 10) { human_charac(this.cntxt, 250);}
-		else 
-		{
-			human_charac(this.cntxt, 0);
-		}
+		else { human_charac(this.cntxt, 0);}
 	},
 
 	// Creates the gameover screen
 	gameover: function ()
 	{
-		// Prevent further actions
-		if (map_states.gameover_screen == 1)
-		{
-			return;
-		}
-		MAIN_MAP.remove();
-		$("#msg_area").remove();
-		// Except for the A button
-		Controls.A_BTN.on("touchstart mousedown", () => { Controls.press_A();})
-		$(document).on("keypress", function (event) 
-		{
-			if (event.key == "k" || event.key == "a"){ Controls.press_A();}
-		});
-
+        // Prevent further actions
+		if (map_states.gameover_screen == 1){ return;}
+        MAIN_MAP.remove();
+        $("#msg_area").remove();
+        // Except for the A button
+        Controls.A_BTN.on("touchstart mousedown", () => { Controls.press_A();})
+        $(document).on("keypress", function (event) 
+        {
+            if (event.key == "k" || event.key == "a"){ Controls.press_A();}
+        });
 		// Create a new div element
 		let gameover_screen = "<div class=main_screen> <h1> Game Over </h1> <p> You survived upto level "
 		+ EnemyClass.difficulty + "</p> <p class=blink> Press A to Play Again </p> </div>";
@@ -124,13 +115,20 @@ var Mc = {
 
 	// Creates the victory screen
 	victory : function ()
-	{		
-		MAIN_MAP.remove();
+	{				
+		if (map_states.gameover_screen == 1){ return;}
+        MAIN_MAP.remove();
+        $("#msg_area").remove();
+        // Except for the A button
+        Controls.A_BTN.on("touchstart mousedown", () => { Controls.press_A();})
+        $(document).on("keypress", function (event) 
+        {
+            if (event.key == "k" || event.key == "a"){ Controls.press_A();}
+        });
 		let victory_screen = "<div class=main_screen> <h1> Victory </h1> <p> You defeated the slimes! </p> <p> You survived upto level "
 + EnemyClass.difficulty + "</p> <p class = blink> Press A to Play Again </p> </div>";
-
 		$("body").prepend(victory_screen)
-		map_states.gameover_screen = 1		
+		map_states.gameover_screen = 1;        
 	}
 }
 
@@ -312,8 +310,7 @@ class EnemyClass {
 	{
 		this.health = this.health - Mc.equipped_weapon.base_dmg;
 		if (this.health <= 0) {
-			await Events.notif("You have slain " + this.name);
-			Controls.controls_deactivate();
+			await Events.notif("You have slain " + this.name);			
 			this.death();
 		} else {		
 			await Events.notif(this.name + " hp: " + this.health);
@@ -323,13 +320,12 @@ class EnemyClass {
 	}
 
 	// When the enemy's health is depleted
-	death ()
+	death()
 	{
 		// Remove from the array	
 		EnemyClass.enemy_array.splice(EnemyClass.enemy_array.indexOf(this), 1);
 		$(this.element).remove();
-		EnemyClass.difficulty += 1
-
+		EnemyClass.difficulty += 1;
 		// If all the enemies are cleared declare victory
 		if (EnemyClass.enemy_array.length <= 0) { Mc.victory();}		
 	}
@@ -425,13 +421,13 @@ class WeaponClass {
 		}
 	}	
 
-	// Local function to delat the reactivation of controls
+	// Local function to delay the reactivation of controls
 	reactivate ()
 	{
 		return new Promise((resolve) => {
 			setTimeout(() => {
 				resolve(Controls.controls_active())
-			}, 500);
+			}, 300);
 		})
 	}
 
@@ -512,7 +508,6 @@ class WeaponClass {
 		}
 		this.reactivate();
 	}	
-
 }
 
 
@@ -531,11 +526,9 @@ var Movement = {
 		if (obj.x < 33) { obj.r = "1"; } else if (obj.x >= 33) { obj.r = "0"; }
 
 		// When the Mc moves again the weapon usage resets
-		if (obj.name == "main_character")
-		{
-			WeaponClass.usage = 0;
-		}
+		if (obj.name == "main_character") { WeaponClass.usage = 0;}
 
+        // Borders of the map
 		if (map_states.main_map == 1) {
 			// Restrictions for the table
 			if (obj.x < 15 && obj.x > 3) {
@@ -593,7 +586,7 @@ var Movement = {
 				obj.l = "0";
 			}
 
-			// Below or above
+			// Checks below or above
 			if (y == current.y + 3 && x == current.x){ obj.u = "0";}
 			if (y == current.y - 3 && x == current.x){ obj.d = "0";}
 		}
@@ -661,10 +654,10 @@ var Controls = {
 	// Basic interaction that calls check_event	
 	press_A: function () 
 	{
-		// Skip to next turn
+		// Skips to next turn
 		if (Events.event_state.exit_house == 1) {
 			Movement.calibrate();
-			Movement.check_collision_characters(Mc);			
+            Movement.check_collision(Mc);         
 		}
 		Events.check_event();
 	},
