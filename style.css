@@ -8,14 +8,14 @@ body {
 .border-double {
     border: double 0.5rem #262e76;
 }
-.bg-stone {
+.bg-main {
     background-color: #326a85cc;
 }
-.bg-mist {
+.bg-fg {
     background-color: #90AFC5;
 }
-.bg-autumn {
-    background-color: #763626;
+.bg-2nd {
+    background-color: #71cdff;
 }
 footer a {
     color: #ffffff;
@@ -48,7 +48,7 @@ a {
     transition:color 0.2s ease-in;
 }
 a:hover {
-    color:#3A5199;
+    color:#ff0606;
 }
 @media screen and (min-width:1080px) {
     html {
