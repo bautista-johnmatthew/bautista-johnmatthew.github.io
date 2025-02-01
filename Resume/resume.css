@@ -11753,3 +11753,13 @@ footer a {
 footer ul {
     list-style: none;
 }
+footer {    
+    padding: 1rem 0rem;
+}
+.list-group-item {
+    background-color: #90AFC5;
+}
+.list-group-item-action:hover {
+    background-color: #326a85cc;
+    color: #fff;
+}
