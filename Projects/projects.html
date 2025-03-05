@@ -3,11 +3,8 @@
 <html lang="en">
 
 <head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
-        </script>
+    <link rel="stylesheet" href="../bootstrap/bootstrap.min.css">
+    <script src="../bootstrap/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="../style.css">
 
     <title>Projects</title>
@@ -25,10 +22,10 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <div class="navbar-nav my-2 my-lg-0">
-                        <a class="navbar-brand text-white fw-bolder" href="/">Home</a>
-                    </div>
-                    <div class="navbar-nav my-2 my-lg-0">
-                        <a class="navbar-brand text-white fw-bolder" href="/Resume/resume.html">Resume</a>
+                    <a class="navbar-brand text-white fw-bolder" href="/">Home</a>
+                </div>
+                <div class="navbar-nav my-2 my-lg-0">
+                    <a class="navbar-brand text-white fw-bolder" href="/Resume/resume.html">Resume</a>
                 </div>
                 <ul class="navbar-nav my-2 my-lg-0">
                     <li class="nav-item dropdown" id="navProject">
@@ -50,16 +47,21 @@
                     </li>
                 </ul>
             </div>
-            <div class="navbar-brand">
+            <div>
                 <h4 class="text-white fw-bolder"> John Matthew Bautista</h4>
             </div>
         </div>
     </nav>
 
-    <div class="container text-center">
+    <div class="container text-center my-5 p-3">
+        <div class="text-center mb-5">
+            <h1 class="display-5 fw-bolder mb-0"><span class="text-white d-inline">Projects</span></h1>
+        </div>
+
         <div class="row m-3">
             <div class="list-group flex gap-3">
-                <a id="GeograPH" href="https://likhalaro.itch.io/geograph" class="list-group-item list-group-item-action" aria-current="true">
+                <a id="GeograPH" href="https://likhalaro.itch.io/geograph"
+                    class="list-group-item list-group-item-action" aria-current="true">
                     <div class="d-flex mb-2 w-100 justify-content-between">
                         <h5 class="mb-1"> GeograPH </h5>
                         <small> Personal Project </small>
@@ -69,16 +71,20 @@
                             <img src="GeograPH.png" class="img-thumbnail" alt="...">
                         </div>
                         <div class="col-lg-8">
-                            <p class="mb-1"> 
-                                An obvious pun of Geography of the Philippines also works in Tagalog as <i>HeograPinas</i>. 
-                                It is a quiz game made using Godot v4.2.2 about Philippine geography with the main goal of 
-                                teaching geography in a simple and fun way. It is a simple game I made inspired by my own 
-                                weakness in geography. The initial game was created within a month and is planned to undergo 
+                            <p class="mb-1">
+                                An obvious pun of Geography of the Philippines also works in Tagalog as
+                                <i>HeograPinas</i>.
+                                It is a quiz game made using Godot v4.2.2 about Philippine geography with the main goal
+                                of
+                                teaching geography in a simple and fun way. It is a simple game I made inspired by my
+                                own
+                                weakness in geography. The initial game was created within a month and is planned to
+                                undergo
                                 multiple updates.
                             </p>
-                            <div class="mt-3 bg-fg">   
-                                <h4 style="color:#212529;"> Future Updates </h4>                     
-                                <ol class="list-group list-group-numbered list-group-flush text-start">                            
+                            <div class="mt-3 bg-fg">
+                                <h4 style="color:#212529;"> Future Updates </h4>
+                                <ol class="list-group list-group-numbered list-group-flush text-start">
                                     <li class="list-group-item">Match and connect game mode </li>
                                     <li class="list-group-item">Enumeration game mode</li>
                                     <li class="list-group-item">Cities and Provinces oriented questions</li>
@@ -88,9 +94,11 @@
                         </div>
                     </div>
                 </a>
-
                 
-                <a href="https://likhalaro.itch.io/gardenrhythm" class="list-group-item list-group-item-action" aria-current="true">
+
+
+                <a href="https://likhalaro.itch.io/gardenrhythm" class="list-group-item list-group-item-action"
+                    aria-current="true">
                     <div class="d-flex mb-2 w-100 justify-content-between">
                         <h5 class="mb-1"> Garden Rhythm </h5>
                         <small> Game Jam </small>
@@ -100,9 +108,11 @@
                             <img src="GardenRhythmCover.png" class="img-thumbnail" alt="...">
                         </div>
                         <div class="col-md-8">
-                            <p class="mb-1"> 
-                                A topdown puzzle and pseudo rhythm game created as submission for the Coco Code GameJam #1.
-                                Explore the fields and gather various poisonous flowers and mix em up to create the cure for the poison invading your body! 
+                            <p class="mb-1">
+                                A topdown puzzle and pseudo rhythm game created as submission for the Coco Code GameJam
+                                #1.
+                                Explore the fields and gather various poisonous flowers and mix em up to create the cure
+                                for the poison invading your body!
                             </p>
                         </div>
                     </div>
@@ -118,36 +128,44 @@
                             <img src="IceBreaker.png" class="img-thumbnail" alt="...">
                         </div>
                         <div class="col-md-8">
-                            <p class="mb-1"> 
-                                A game imported to HTML 5 as a submission to the Nokia 3310 Jam 6. 
-                                It is styled according to the colors of a nokia 3310 phone, including its limitations in playing music.
-                                It is a platformer game that is inspired from "Ice Climbers", however it lacks multiple levels and is more simplified.
+                            <p class="mb-1">
+                                A game imported to HTML 5 as a submission to the Nokia 3310 Jam 6.
+                                It is styled according to the colors of a nokia 3310 phone, including its limitations in
+                                playing music.
+                                It is a platformer game that is inspired from "Ice Climbers", however it lacks multiple
+                                levels and is more simplified.
                                 Due to the nature of limited time in development it requires updates for optimization.
                             </p>
                         </div>
                     </div>
                 </a>
-                
-                <a id="Greet" href="https://www.youtube.com/watch?v=I4lYmUAg9-k" class="list-group-item list-group-item-action" aria-current="true" target="_blank">
+
+                <a id="Greet" href="https://www.youtube.com/watch?v=I4lYmUAg9-k"
+                    class="list-group-item list-group-item-action" aria-current="true" target="_blank">
                     <div class="d-flex mb-2 w-100 justify-content-between">
                         <h5 class="mb-1"> Greet </h5>
                         <small> Personal Project </small>
                     </div>
                     <div class="row g-3">
                         <div class="col-xl-6 d-none d-sm-block">
-                            <iframe id="greetFrame" width="460" height="315" src="https://www.youtube.com/embed/I4lYmUAg9-k?si=ZkG-E75NuqaRobpP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>                            
+                            <iframe id="greetFrame" width="460" height="315"
+                                src="https://www.youtube.com/embed/I4lYmUAg9-k?si=ZkG-E75NuqaRobpP"
+                                title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                         </div>
                         <div class="col-xl-6 d-sm-block d-md-none">
                             <h5 class="fst-italic"> View the video on Youtube </h5>
                         </div>
                         <div class="col-xl-6">
-                            <p class="mb-1"> 
+                            <p class="mb-1">
                                 A web app prototype submitted as my final project to the CS50x 2023 course.
-                                It utilises a combination of multiple languages including Python, JavaScript, 
+                                It utilises a combination of multiple languages including Python, JavaScript,
                                 SQlite and libraries such as Bootstrap and Jquery. It is based from Reddit that uses
-                                karma not just to show account activity but a form of currency to be used on the website.
-                                This link redirects to the source code of the project. 
-                            </p>                                                        
+                                karma not just to show account activity but a form of currency to be used on the
+                                website.
+                                This link redirects to the source code of the project.
+                            </p>
                         </div>
                     </div>
                 </a>
@@ -174,27 +192,29 @@
                         <div class="col-md-8">
                             <p class="mb-1">A 90 day counter widget using javascript, more specifically it is
                                 a simple animation player used to count 90 days.
-                                The input is only temporary stored in the script. 
-                                And this is one my oldest practice projects </p>                            
+                                The input is only temporary stored in the script.
+                                And this is one my oldest practice projects </p>
                         </div>
                     </div>
                 </a>
                 <a href="SimpleRpg\GameDev1.html" class="list-group-item list-group-item-action" aria-current="true">
                     <div class="d-flex mb-2 w-100 justify-content-between">
                         <h5 class="mb-1"> SimpleRpg </h5>
-                        <small>  </small>
+                        <small> </small>
                     </div>
                     <div class="row g-3">
                         <div class="col-md-4">
                             <img src="SimpleRpg.png" class="img-thumbnail" alt="...">
                         </div>
                         <div class="col-md-8">
-                            <p class="mb-1"> 
-                                A html5 game written purely using javascript that features turn based movement on a 2.5d environment.
-                                The goal of the game is to eliminate enemy slimes that follow the main character's movements.
+                            <p class="mb-1">
+                                A html5 game written purely using javascript that features turn based movement on a 2.5d
+                                environment.
+                                The goal of the game is to eliminate enemy slimes that follow the main character's
+                                movements.
                                 This is relatively one of my projects that required writing a lot or original mechanics.
                                 It is regularly updated for other features
-                            </p>             
+                            </p>
                             <!-- <div class="mt-3 bg-fg">   
                                 <h4 style="color:#212529;"> Future Updates </h4>                     
                                 <ol class="list-group list-group-numbered list-group-flush text-start">                            
@@ -205,7 +225,7 @@
                                 </ol>
                             </div>                -->
                         </div>
-                    </div>                    
+                    </div>
                 </a>
             </div>
         </div>
@@ -216,15 +236,19 @@
             <li class="list-group-item">
                 <h5>For inqueries reach out through my social media accounts</h5>
             </li>
-            <a href="https://github.com/JohnMatthewBautista" class="list-group-item flex-fill"> 
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
-                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
+            <a href="https://github.com/JohnMatthewBautista" class="list-group-item flex-fill">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-github"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8" />
                 </svg>
                 <span class="ml-3">Github Account</span>
             </a>
-            <a href="https://www.linkedin.com/in/john-matthew-bautista-1a8961318" class="list-group-item flex-fill"> 
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
-                    <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/>
+            <a href="https://www.linkedin.com/in/john-matthew-bautista-1a8961318" class="list-group-item flex-fill">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                    class="bi bi-linkedin" viewBox="0 0 16 16">
+                    <path
+                        d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z" />
                 </svg>
                 LinkedIn Account
             </a>

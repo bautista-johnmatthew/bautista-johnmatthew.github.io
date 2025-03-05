@@ -2,81 +2,96 @@
 
 <html lang="en">
 
-    <head>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-            crossorigin="anonymous">
-        </script>
-        <link rel="stylesheet" href="../../style.css">
-        <style defer>
-            a {text-decoration: underline;color:#023457;}
-        </style>
+<head>
+    <link rel="stylesheet" href="../../bootstrap/bootstrap.min.css">
+    <script src="../../bootstrap/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="../../style.css">
+    <style defer>
+        a {
+            text-decoration: underline;
+            color: #023457;
+        }
+    </style>
 
-        <title>IceBreaker</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <nav class="navbar navbar-expand-lg bg-main border-double">
-            <div class="container-fluid">
-                <a class="navbar-brand text-white fw-bolder" href="../../index.html">Home</a>
-                <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+    <title>IceBreaker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">                    
-                        <li class="nav-item dropdown" id="navProject">
-                            <a class="nav-link dropdown-toggle text-white fw-bolder" href="../projects.html" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Projects
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a class="dropdown-item fw-bold" href="../projects.html"> View All </a>
-                                </li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li>
-                                    <a class="dropdown-item" href="../SimpleRpg/GameDev1.html">Simple rpg</a>
-                                </li>                                
-                                <li>
-                                    <a class="dropdown-item" href="../90days/90day.html">90 days</a>
-                                </li> 
-                                <li>
-                                    <a class="dropdown-item active" href="#">Ice Breaker</a>
-                                </li> 
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        
-        <div class="row container-fluid justify-content-center">            
-            <div class="row my-3" style="width: 840px;">
-                <iframe frameborder="0" src="https://itch.io/embed-upload/10926400?color=333333" allowfullscreen="" width="840" height="500"><a href="https://likhalaro.itch.io/icebreaker-improved">Play Ice Breaker (Improved version) on itch.io</a></iframe>
-            </div>
-            <div class="row">
-                <iframe frameborder="0" src="https://itch.io/embed/2835820?bg_color=90AFC5" width="552" height="167"><a href="https://likhalaro.itch.io/icebreaker-improved">Ice Breaker (Improved version) by Likha Laro</a></iframe>
-            </div>
-            <div class="row pt-2 text-center bg-2nd border-double" style="width: 840px;">
-                <p>A platformer game submitted to the <a href="https://itch.io/jam/nokiajam6/rate/2548818"> Nokia 3310 GameJam 6</a>, based from the Nintendo Game "Ice Climbers" that features a map with breakable tiles. The goal of the game is to traverse the map and collect snowflakes scattered around the map for additional point.</p>
-                <p>Created using Godot engine 3.5</br><a href="https://github.com/JohnMatthewBautista/johnmatthewbautista.github.io/tree/1419420e1a1eec01a8bbfd7f7f7870994f53a1bb/Projects/IceBreaker">View the files here</a></p>
+<body>
+    <nav class="navbar navbar-expand-lg bg-main border-double">
+        <div class="container-fluid">
+            <a class="navbar-brand text-white fw-bolder" href="../../index.html">Home</a>
+            <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown" id="navProject">
+                        <a class="nav-link dropdown-toggle text-white fw-bolder" href="../projects.html" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Projects
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item fw-bold" href="../projects.html"> View All </a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="../SimpleRpg/GameDev1.html">Simple rpg</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="../90days/90day.html">90 days</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item active" href="#">Ice Breaker</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </div>
+    </nav>
+
+    <div class="row container-fluid justify-content-center">
+        <div class="row my-3" style="width: 840px;">
+            <iframe frameborder="0" src="https://itch.io/embed-upload/10926400?color=333333" allowfullscreen=""
+                width="840" height="500"><a href="https://likhalaro.itch.io/icebreaker-improved">Play Ice Breaker
+                    (Improved version) on itch.io</a></iframe>
+        </div>
+        <div class="row">
+            <iframe frameborder="0" src="https://itch.io/embed/2835820?bg_color=90AFC5" width="552" height="167"><a
+                    href="https://likhalaro.itch.io/icebreaker-improved">Ice Breaker (Improved version) by Likha
+                    Laro</a></iframe>
+        </div>
+        <div class="row pt-2 text-center bg-2nd border-double" style="width: 840px;">
+            <p>A platformer game submitted to the <a href="https://itch.io/jam/nokiajam6/rate/2548818"> Nokia 3310
+                    GameJam 6</a>, based from the Nintendo Game "Ice Climbers" that features a map with breakable tiles.
+                The goal of the game is to traverse the map and collect snowflakes scattered around the map for
+                additional point.</p>
+            <p>Created using Godot engine 3.5</br><a
+                    href="https://github.com/JohnMatthewBautista/johnmatthewbautista.github.io/tree/1419420e1a1eec01a8bbfd7f7f7870994f53a1bb/Projects/IceBreaker">View
+                    the files here</a></p>
+        </div>
+    </div>
 
 
-        <footer class="container-fluid my-2">            
-            <ul class="list-group list-group-horizontal-lg">
-                <li class="list-group-item"><h5>For inqueries reach out through my social media accounts</h5></li>
-                <a href="https://github.com/JohnMatthewBautista" class="list-group-item flex-fill"> Github Account </a>
-                <a href="https://www.linkedin.com/in/john-matthew-bautista-1a8961318" class="list-group-item flex-fill"> LinkedIn Account
-                </a>
-            </ul>
-        </footer>    
+    <footer class="container-fluid my-2">
+        <ul class="list-group list-group-horizontal-lg">
+            <li class="list-group-item">
+                <h5>For inqueries reach out through my social media accounts</h5>
+            </li>
+            <a href="https://github.com/JohnMatthewBautista" class="list-group-item flex-fill"> Github Account </a>
+            <a href="https://www.linkedin.com/in/john-matthew-bautista-1a8961318" class="list-group-item flex-fill">
+                LinkedIn Account
+            </a>
+        </ul>
+    </footer>
 
-    </body>
+</body>
+
 </html>
