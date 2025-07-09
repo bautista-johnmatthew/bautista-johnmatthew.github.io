@@ -22,13 +22,16 @@ body {
     box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.19) 2px 16px 8px, rgba(0, 0, 0, 0.19) 2px 32px 16px;
 }
 .card-custom-img {
+    display: flex;
+    align-items: center;
     max-height: 20rem;
     max-width: 20rem;
     margin: auto;
 }
 .card-profile-img {
+    background-color: #326a85cc;
     border:double 0.4rem #326a85cc;
-    border-radius: 50%;
+    border-radius: 20%;
 }
 footer a {
     color: #ffffff;
