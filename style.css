@@ -29,8 +29,8 @@ body {
     margin: auto;
 }
 .card-profile-img {
+    max-width: 16rem;
     background-color: #326a85cc;
-    border:double 0.4rem #326a85cc;
     border-radius: 20%;
 }
 footer a {
@@ -49,6 +49,9 @@ p {
 }
 small {
     color: #262e76 ;
+}
+.card-shadow:hover {
+    box-shadow: 0 0 15px rgba(113, 205, 255, 0.7);
 }
 .list-group-item {
     background-color: #90AFC5;
